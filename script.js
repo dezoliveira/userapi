@@ -35,7 +35,11 @@ function mountTable(data){
       <td>${data[i].id}</td>
       <td>${data[i].name}</td>
       <td>${data[i].username}</td>
-      <td>${data[i].website}</td>
+      <td>
+        <a>
+          ${data[i].website}
+        </a>
+      </td>
     </tr>
   `
   }
