@@ -6,6 +6,8 @@ let tableTitle = document.getElementById('tableTitle')
 button.addEventListener('click', showUsers)
 
 function showUsers(){
+  button.disabled = true
+
   fetch('https://jsonplaceholder.typicode.com/users')
   .then((res) => res.json())
   .then(data => {
@@ -17,13 +19,16 @@ function showUsers(){
 function mountTable(data){
   title.style.display = "none"
   tableTitle.style.display = "block"
-
-  const th = `  
+  
+  let th = ''  
+  
+  th = `  
   <tr class="has-background-primary">
     <th>ID</th>
     <th>Nome</th>
     <th>Usuario</th>
-    <th>Website</th>
+    <th>Cidade</th>
+    <th>Email</th>
   </tr>        
   `
 
@@ -35,10 +40,9 @@ function mountTable(data){
       <td>${data[i].id}</td>
       <td>${data[i].name}</td>
       <td>${data[i].username}</td>
+      <td>${data[i].address.city}</td>
       <td>
-        <a>
-          ${data[i].website}
-        </a>
+        <a>${data[i].email}</a>
       </td>
     </tr>
   `
